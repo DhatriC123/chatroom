@@ -56,7 +56,7 @@ def room():
 
     return render_template("room.html", code=room, messages=rooms[room]["messages"])
 
-@socketio.on("message")
+@socketio.on("message") #this is called when .emut is done on the client side.so server recieves msg from client,packs it in data.send send it to all the clients(triggering onmehhage on client sie.so message is created at appended to html(displyed)
 def message(data):
     room = session.get("room")
     if room not in rooms:
@@ -81,7 +81,7 @@ def connect(auth):
         return
     
     join_room(room)
-    send({"name": name, "message": "has entered the room"}, to=room)
+    send({"name": name, "message": "has entered the room"}, to=room) #srver is sending to all clients.this triggers onmessagce on client side.so it creates the msg and appends to htm(so see on screen)
     rooms[room]["members"] += 1
     print(f"{name} joined room {room}")
 
