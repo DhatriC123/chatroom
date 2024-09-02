@@ -41,7 +41,7 @@
   const sendMessage = () => {
     const message = document.getElementById("message");
     if (message.value == "") return;
-    socketio.emit("message", { data: message.value });
+    socketio.emit("message", { data: message.value });      # sending to server side(main.py) where@socketio.on("message")happens,def message called.it does send msg.
     message.value = "";
   };
 </script>
