@@ -56,7 +56,7 @@ def room():
 
     return render_template("room.html", code=room, messages=rooms[room]["messages"])
 
-@socketio.on("message") #this is called when .emut is done on the client side.so server recieves msg from client,packs it in data.send send it to all the clients(triggering onmehhage on client sie.so message is created at appended to html(displyed)
+@socketio.on("message") #this is called when .emit is done on the client side.so server recieves msg from client,packs it in data.send sends it to all the clients(triggering onmessage on client side in room.html.so message is created by create message function in room.html and appended to html(displyed)
 def message(data):
     room = session.get("room")
     if room not in rooms:
